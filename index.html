@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <h1>Etch-a-Sketch</h1>
+
+    <div id="main-window">
+        <div id="left-buttons">
+            <div id="progress-bar">
+
+                <input id="grid-size" type="range" name="grid-size" min="1" max="100" value="16" data-sizing="px">
+
+                <label for="grid-size">Grid Size</label>
+                <span id="range-value">16</span>
+                <span>X</span>
+                <span id="range-value">16</span>
+                <button id="btn-apply-grid">
+                    Apply Grid
+                </button>
+                
+            </div>
+
+            <div id="pen-color-selector">
+                <input id="pen-color" type="color" name="pen-color" value="#000000">
+                <label for="pen-color">Pen Color</label>
+            </div>
+
+            <button id="btn-clear">
+                Clear
+            </button>
+            
+            <button id="btn-lighten">
+                Lighten
+            </button>
+            
+            <button id="btn-shading">
+                Shading
+            </button>
+            
+            <button id="btn-rainbow">
+                Rainbow
+            </button>
+            
+            <button id="btn-color-grabber">
+                Color Grabber
+            </button>
+
+            <button id="btn-click-and-fill">
+                Click & Fill
+            </button>
+
+            <button id="btn-hold-and-fill">
+                Hold & Fill
+            </button>
+
+        </div>
+
+        <div id="sketch-pad">
+            <div id="sketch-screen">
+                <div class="grid-panel">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <span>&copy; Collene De Silva</span>
+    </footer>
+</body>
+</html>
