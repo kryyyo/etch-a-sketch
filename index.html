@@ -5,70 +5,113 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
+
+    <!-- Stylesheet -->
+    <link href="./style.css" rel="stylesheet">
+
+    <!-- Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Etch-a-Sketch</h1>
+    <section id="etch-a-sketch">
+        <h1>Etch-a-Sketch</h1>
 
-    <div id="main-window">
-        <div id="left-buttons">
-            <div id="progress-bar">
+        <div id="main-window">
+            <div id="left-buttons">
 
-                <input id="grid-size" type="range" name="grid-size" min="1" max="100" value="16" data-sizing="px">
+                <div id="pen-color-selector">
+                    <input id="pen-color" type="color" name="pen-color" value="#000000">
+                    <label for="pen-color">Pen Color</label>
+                </div>
 
-                <label for="grid-size">Grid Size</label>
-                <span id="range-value">16</span>
-                <span>X</span>
-                <span id="range-value">16</span>
-                <button id="btn-apply-grid">
-                    Apply Grid
+                <div class="fill-method">
+                    <button id="btn-click-and-fill" class="btn">
+                        Click & Fill
+                    </button>
+    
+                    <button id="btn-hold-and-fill" class="btn">
+                        Hold & Fill
+                    </button>
+                </div>
+
+                <div class="extra-features">
+                    <button id="btn-color-grabber" class="btn">
+                        Color Grabber
+                    </button>
+    
+                    <button id="btn-rainbow" class="btn">
+                        Rainbow
+                    </button>
+                    
+                    <button id="btn-shading" class="btn">
+                        Shading
+                    </button>
+                    
+                    <button id="btn-lighten" class="btn">
+                        Lighten
+                    </button>
+                </div>
+            
+                <div id="progress-bar">
+
+                    <input id="grid-size" type="range" name="grid-size" min="1" max="100" value="5" data-sizing="px">
+
+                   <div class="grid-size-label">
+                    <label for="grid-size">Grid Size:</label>
+                    <span id="range-value">5</span>
+                    <span>X</span>
+                    <span id="range-value">5</span>
+                   </div>
+                    
+                    <button id="btn-apply-grid">
+                        Apply Grid
+                    </button>
+                    
+                </div> 
+
+                <button id="btn-clear" class="btn">
+                    Clear
                 </button>
-                
+
             </div>
 
-            <div id="pen-color-selector">
-                <input id="pen-color" type="color" name="pen-color" value="#000000">
-                <label for="pen-color">Pen Color</label>
-            </div>
-
-            <button id="btn-clear">
-                Clear
-            </button>
-            
-            <button id="btn-lighten">
-                Lighten
-            </button>
-            
-            <button id="btn-shading">
-                Shading
-            </button>
-            
-            <button id="btn-rainbow">
-                Rainbow
-            </button>
-            
-            <button id="btn-color-grabber">
-                Color Grabber
-            </button>
-
-            <button id="btn-click-and-fill">
-                Click & Fill
-            </button>
-
-            <button id="btn-hold-and-fill">
-                Hold & Fill
-            </button>
-
-        </div>
-
-        <div id="sketch-pad">
-            <div id="sketch-screen">
-                <div class="grid-panel">
-
+            <div id="sketch-pad">
+                <div id="sketch-screen">
+                    <div class="grid-panel">
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
+        </div>
+    </section>
 
     <footer>
         <span>&copy; Collene De Silva</span>

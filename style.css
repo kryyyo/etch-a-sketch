@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px red solid; */
+}
+
+body {
+    min-height: 100vh;
+    background: #1A1818;
+
+    /* For text contents */
+    color: #C9D3D7;
+    font-family: VT323, monospace;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#etch-a-sketch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    margin-top: 15px;
+}
+
+body h1 {
+    font-size: 72px;
+}
+
+#main-window {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#sketch-pad {
+    width: 425px;
+    height: 425px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #423D3D;
+    border-radius: 10px;
+}
+
+#sketch-screen {
+    width: 400px;
+    height: 400px;
+    background: #C9D3D7;
+    border: 10px solid #C9D3D7;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 3.43595px 3.43595px rgba(0, 0, 0, 0.25);
+}
+
+#left-buttons {
+    width: 160px;
+    height: 425px;
+    padding: 25px;
+
+    background: #423D3D;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pen-color-selector {
+    font-size: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    
+    margin-bottom: 15px;
+}
+
+#pen-color-selector input {
+    background: transparent;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#pen-color {
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    font-size: 16px;
+    font-family: VT323, monospace;
+    padding: 3px 0;
+
+    width: 100px;
+
+    color: #C9D3D7;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#progress-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+#grid-size {
+    width: 100px
+}
+
+.grid-size-label {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.fill-method, .extra-features {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 25px;
+}
+
+.grid-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-panel div{
+    width: calc(100%/5);
+    height: calc(100%/5);
+    color: black;
+    border: 1px solid black;
+    border-top: gray;
+}
