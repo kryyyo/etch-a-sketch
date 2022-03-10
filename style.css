@@ -5,6 +5,20 @@
     /* border: 1px red solid; */
 }
 
+/* Variables start */
+:root {
+    --base: #000000;
+
+    --divsize: 20%;
+
+
+    /* For lighten and shading */
+    --lighten: 50%;
+    --shading: 50%;
+
+}
+
+
 body {
     min-height: 100vh;
     background: #1A1818;
@@ -143,9 +157,10 @@ button {
 }
 
 .grid-panel div{
-    width: calc(100%/5);
-    height: calc(100%/5);
+    width: var(--divsize);
+    height: var(--divsize);
     color: black;
-    border: 1px solid black;
-    border-top: gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    
 }
