@@ -22,11 +22,15 @@ const buttonHoldFill = document.querySelector('#btn-hold-and-fill')
 
 const buttonEraser = document.querySelector('#btn-eraser')
 
+const buttonColorGrabber = document.querySelector('#btn-color-grabber')
+
 const allButtons = document.querySelectorAll('button')
 
 const penColor = document.querySelector('#pen-color')
 
 const sketchScreen = document.querySelector('#sketch-screen')
+
+const extraButtons = document.querySelectorAll('.extra-features')
 
 
 // Event Listeners 
@@ -44,7 +48,7 @@ penColor.addEventListener('change', getColor)
 
 buttonEraser.addEventListener('click', eraser)
 
-
+buttonColorGrabber.addEventListener('click', grabColor) 
 
 // Functions
 function testEvent(e) {
@@ -53,6 +57,7 @@ function testEvent(e) {
 
 function testTarget() {
     console.log(this)
+    
 }
 
 function captureValue() {
@@ -159,6 +164,7 @@ function getColor() {
 
 function addColor() {
 
+    color = penColor.value
     if (buttonEraser.classList.value === 'btn on'){
         this.removeAttribute('style', `background-color: ${color}`)
     } else {
@@ -179,4 +185,23 @@ function exitHold() {
 
 function clearSketch() {
     newGridPanels.forEach(div => div.removeAttribute('style', `background-color: ${color}`))
+}
+
+//Refactor this shit
+function grabColor() {
+    this.classList.add('on')
+    newGridPanels.forEach(div => div.addEventListener('click', whatColor))
+}
+
+function whatColor() {
+
+    const bgcolor = this.getAttribute('style').slice(19)
+
+    if (bgcolor) {
+        penColor.value = `#${bgcolor}`
+    } else {
+        return
+    }
+
+    buttonColorGrabber.classList.toggle('on')
 }
