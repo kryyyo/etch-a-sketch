@@ -32,7 +32,7 @@ gridSizer.addEventListener('change', captureValue)
 
 buttonToggleGrid.addEventListener('click', toggleGrid)
 
-buttonClear.addEventListener('click', testEvent)
+buttonClear.addEventListener('click', clearSketch)
 
 buttonClickFill.addEventListener('click', clickAndFill)
 
@@ -161,4 +161,8 @@ function holdDown(e) {
 
 function exitHold() {
     newGridPanels.forEach(div => div.removeEventListener('mouseenter', addColor))
+}
+
+function clearSketch() {
+    newGridPanels.forEach(div => div.removeAttribute('style', `background-color: ${color}`))
 }
