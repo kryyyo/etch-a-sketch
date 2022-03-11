@@ -20,6 +20,8 @@ const buttonClickFill = document.querySelector('#btn-click-and-fill')
 
 const buttonHoldFill = document.querySelector('#btn-hold-and-fill')
 
+const buttonEraser = document.querySelector('#btn-eraser')
+
 const allButtons = document.querySelectorAll('button')
 
 const penColor = document.querySelector('#pen-color')
@@ -39,6 +41,9 @@ buttonClickFill.addEventListener('click', clickAndFill)
 buttonHoldFill.addEventListener('click', holdAndFill)
 
 penColor.addEventListener('change', getColor)
+
+buttonEraser.addEventListener('click', eraser)
+
 
 
 // Functions
@@ -143,13 +148,22 @@ function holdAndFill() {
     }
 }
 
+function eraser(){
+    this.classList.toggle('on')
+}
+
 
 function getColor() {
     color = this.value
 }
 
 function addColor() {
-    this.setAttribute('style', `background-color: ${color}`)
+
+    if (buttonEraser.classList.value === 'btn on'){
+        this.removeAttribute('style', `background-color: ${color}`)
+    } else {
+        this.setAttribute('style', `background-color: ${color}`)
+    }
 }
 
 function holdDown(e) {
