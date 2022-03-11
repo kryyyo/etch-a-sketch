@@ -20,68 +20,71 @@
         <h1>Etch-a-Sketch</h1>
 
         <div id="main-window">
-            <div id="left-buttons">
+            <div class="tools">
+                <h2>Select Grid Size to Start!</h2>
+                <div id="left-buttons">
 
-                <div id="contain-buttons">
-                    <div id="pen-color-selector">
-                        <input id="pen-color" type="color" name="pen-color" value="#000000">
-                        <label for="pen-color">Pen Color</label>
-                    </div>
-    
-                    <div class="fill-method">
-                        <button id="btn-click-and-fill" class="btn" disabled>
-                            Click & Fill
-                        </button>
+                    <div id="contain-buttons">
+                        <div id="pen-color-selector">
+                            <input id="pen-color" type="color" name="pen-color" value="#000000">
+                            <label for="pen-color">Pen Color</label>
+                        </div>
         
-                        <button id="btn-hold-and-fill" class="btn" disabled>
-                            Hold & Fill
-                        </button>
-                    </div>
-    
-                    <div class="extra-features">
-                        <button id="btn-color-grabber" class="btn" disabled>
-                            Color Grabber
-                        </button>
+                        <div class="fill-method">
+                            <button id="btn-click-and-fill" class="btn" disabled>
+                                Click & Fill
+                            </button>
+            
+                            <button id="btn-hold-and-fill" class="btn" disabled>
+                                Hold & Fill
+                            </button>
+                        </div>
         
-                        <button id="btn-rainbow" class="btn" disabled>
-                            Rainbow
-                        </button>
-                        
-                        <button id="btn-shading" class="btn" disabled>
-                            Shading
-                        </button>
-                        
-                        <button id="btn-lighten" class="btn" disabled>
-                            Lighten
-                        </button>
-
-                        <button id="btn-eraser" class="btn" disabled>
-                            Eraser
+                        <div class="extra-features">
+                            <button id="btn-color-grabber" class="btn" disabled>
+                                Color Grabber
+                            </button>
+            
+                            <button id="btn-rainbow" class="btn" disabled>
+                                Rainbow
+                            </button>
+                            
+                            <button id="btn-shading" class="btn" disabled>
+                                Shading
+                            </button>
+                            
+                            <button id="btn-lighten" class="btn" disabled>
+                                Lighten
+                            </button>
+    
+                            <button id="btn-eraser" class="btn" disabled>
+                                Eraser
+                            </button>
+                        </div>
+                    
+                        <div id="progress-bar">
+        
+                            <input id="grid-size" type="range" name="grid-size" min="1" max="100" value="5" data-sizing="%">
+        
+                           <div class="grid-size-label">
+                            <label for="grid-size">Grid Size:</label>
+                            <span class="range-value">5</span>
+                            <span>X</span>
+                            <span class="range-value">5</span>
+                           </div>
+                            
+                            <button id="btn-toggle-grid" class="btn" disabled>
+                                Toggle Grid
+                            </button>
+                            
+                        </div> 
+        
+                        <button id="btn-clear" class="btn" disabled>
+                            Clear
                         </button>
                     </div>
-                
-                    <div id="progress-bar">
     
-                        <input id="grid-size" type="range" name="grid-size" min="1" max="100" value="5" data-sizing="%">
-    
-                       <div class="grid-size-label">
-                        <label for="grid-size">Grid Size:</label>
-                        <span class="range-value">5</span>
-                        <span>X</span>
-                        <span class="range-value">5</span>
-                       </div>
-                        
-                        <button id="btn-toggle-grid" class="btn" disabled>
-                            Toggle Grid
-                        </button>
-                        
-                    </div> 
-    
-                    <button id="btn-clear" class="btn" disabled>
-                        Clear
-                    </button>
                 </div>
-
             </div>
 
             <div id="sketch-pad">
