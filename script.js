@@ -24,6 +24,8 @@ const allButtons = document.querySelectorAll('button')
 
 const penColor = document.querySelector('#pen-color')
 
+const sketchScreen = document.querySelector('#sketch-screen')
+
 
 // Event Listeners 
 gridSizer.addEventListener('change', captureValue)
@@ -102,13 +104,13 @@ function toggleGrid() {
 function fillMethod() {
     if (buttonClickFill.classList.value === 'btn on') {
         newGridPanels.forEach(div => div.addEventListener('click', addColor))
-        newGridPanels.forEach(div => div.removeEventListener('mouseenter', testEvent))
+        newGridPanels.forEach(div => div.removeEventListener('mousedown', holdDown))
     } else if (buttonHoldFill.classList.value === 'btn on') {
-        newGridPanels.forEach(div => div.addEventListener('mouseenter', testEvent))
+        newGridPanels.forEach(div => div.addEventListener('mousedown', holdDown))
         newGridPanels.forEach(div => div.removeEventListener('click', addColor))
     } else {
         newGridPanels.forEach(div => div.removeEventListener('click', addColor))
-        newGridPanels.forEach(div => div.removeEventListener('mouseenter', testEvent))
+        newGridPanels.forEach(div => div.removeEventListener('mousedown', holdDown))
     }
 }
 
@@ -146,9 +148,17 @@ function getColor() {
     color = this.value
 }
 
-
-//REFACTOR THIS PLEASE
 function addColor() {
-    document.styleSheets[0].cssRules[1].style.setProperty('--base', color)
-    this.setAttribute('style', 'background-color: var(--base)')
+    this.setAttribute('style', `background-color: ${color}`)
+}
+
+function holdDown(e) {
+    e.preventDefault()
+    newGridPanels.forEach(div => div.addEventListener('mouseenter', addColor))
+    newGridPanels.forEach(div => div.addEventListener('mouseup', exitHold))
+    sketchScreen.addEventListener('mouseleave', exitHold)
+}
+
+function exitHold() {
+    newGridPanels.forEach(div => div.removeEventListener('mouseenter', addColor))
 }
