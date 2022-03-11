@@ -7,7 +7,7 @@
 
 /* Variables start */
 :root {
-    --base: #000000;
+    --base: transparent;
 
     --divsize: 20%;
 
@@ -45,10 +45,13 @@ body {
 
 footer {
     margin-top: 15px;
+    margin-left: 980px;
 }
 
 body h1 {
     font-size: 72px;
+    align-self: flex-end;
+    margin-right: 237.5px
 }
 
 #main-window {
@@ -60,8 +63,8 @@ body h1 {
 }
 
 #sketch-pad {
-    width: 425px;
-    height: 425px;
+    width: 850px;
+    height: 850px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,16 +74,16 @@ body h1 {
 }
 
 #sketch-screen {
-    width: 400px;
-    height: 400px;
+    width: 800px;
+    height: 800px;
     background: #C9D3D7;
     border: 10px solid #C9D3D7;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 3.43595px 3.43595px rgba(0, 0, 0, 0.25);
 }
 
 #left-buttons {
-    width: 160px;
-    height: 425px;
+    width: 200px;
+    height: 600px;
     padding: 25px;
 
     background: #423D3D;
@@ -88,18 +91,19 @@ body h1 {
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 #pen-color-selector {
-    font-size: 18px;
+    font-size: 20px;
 
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
     
-    margin-bottom: 15px;
+    margin-bottom: 50px;
 }
 
 #pen-color-selector input {
@@ -120,11 +124,12 @@ body h1 {
 }
 
 .btn {
-    font-size: 16px;
+    font-size: 20px;
     font-family: VT323, monospace;
     padding: 3px 0;
 
-    width: 100px;
+    height: 30px;
+    width: 150px;
 
     color: #C9D3D7;
     background-color: transparent;
@@ -146,16 +151,16 @@ body h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 45px;
+    margin-bottom: 50px;
 }
 
 #grid-size {
-    width: 100px
+    width: 150px;
 }
 
 .grid-size-label {
-    font-size: 14px;
-    margin-bottom: 3px;
+    font-size: 16px;
+    margin-bottom: 5px;
     display: flex;
 }
 
@@ -163,7 +168,7 @@ body h1 {
     display: flex;
     flex-direction: column;
     gap: 3px;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 .grid-panel {
@@ -179,4 +184,4 @@ body h1 {
     height: var(--divsize);
     border-bottom: 1px solid gray;
     border-right: 1px solid gray;
-}
+} 

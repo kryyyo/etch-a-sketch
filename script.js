@@ -1,15 +1,14 @@
 // Containers
 let divSize;
 
-let fillMethod = 0; //0 - pen up, 1 - click&fill, 2 - hold&fill
+let newGridPanels;
 
+let color = "#000000";
 
 // Elements
 const gridSizer = document.querySelector('#grid-size')
 
 const gridPanel = document.querySelector('.grid-panel')
-
-const gridPanelDiv = document.querySelectorAll('.grid-panel div')
 
 const gridLabel = document.querySelectorAll('.grid-size-label .range-value')
 
@@ -21,11 +20,13 @@ const buttonClickFill = document.querySelector('#btn-click-and-fill')
 
 const buttonHoldFill = document.querySelector('#btn-hold-and-fill')
 
+const allButtons = document.querySelectorAll('button')
+
+const penColor = document.querySelector('#pen-color')
+
 
 // Event Listeners 
 gridSizer.addEventListener('change', captureValue)
-
-gridPanelDiv.forEach(div => div.addEventListener('click', testEvent))
 
 buttonToggleGrid.addEventListener('click', toggleGrid)
 
@@ -35,9 +36,15 @@ buttonClickFill.addEventListener('click', clickAndFill)
 
 buttonHoldFill.addEventListener('click', holdAndFill)
 
+penColor.addEventListener('change', getColor)
+
 
 // Functions
-function testEvent() {
+function testEvent(e) {
+    console.log(e)
+}
+
+function testTarget() {
     console.log(this)
 }
 
@@ -59,6 +66,20 @@ function captureValue() {
     document.styleSheets[0].cssRules[1].style.setProperty('--divsize', divSize)
 
     gridLabel.forEach(label => label.textContent = gridInputValue)
+
+    const gridPanelDiv = document.querySelectorAll('.grid-panel div')
+
+    newGridPanels = gridPanelDiv;
+
+    if (buttonHoldFill.classList.value === 'btn on') {
+        buttonHoldFill.classList.remove('on')
+    }
+
+    if (buttonClickFill.classList.value === 'btn on') {
+        buttonClickFill.classList.remove('on')
+    }
+
+    allButtons.forEach(button => button.removeAttribute('disabled'))
 }
 
 function toggleGrid() {
@@ -78,27 +99,32 @@ function toggleGrid() {
 }
 
 
+function fillMethod() {
+    if (buttonClickFill.classList.value === 'btn on') {
+        newGridPanels.forEach(div => div.addEventListener('click', addColor))
+        newGridPanels.forEach(div => div.removeEventListener('mouseenter', testEvent))
+    } else if (buttonHoldFill.classList.value === 'btn on') {
+        newGridPanels.forEach(div => div.addEventListener('mouseenter', testEvent))
+        newGridPanels.forEach(div => div.removeEventListener('click', addColor))
+    } else {
+        newGridPanels.forEach(div => div.removeEventListener('click', addColor))
+        newGridPanels.forEach(div => div.removeEventListener('mouseenter', testEvent))
+    }
+}
+
+
 function clickAndFill() {
 
     if (buttonHoldFill.classList.value === 'btn on') {
         this.classList.toggle('on')
         buttonHoldFill.classList.toggle('on')
-        fillMethod = true
+        fillMethod()
     } else if (buttonHoldFill.classList.value === 'btn' || this.classList.value === 'btn') {
         this.classList.toggle('on')
-        fillMethod = true
+        fillMethod()
     } else {
         return
     }
-
-    if (this.classList.value === 'btn on') {
-        fillMethod = 1
-    } else if (buttonHoldFill.classList.value === 'btn on') {
-        fillMethod = 2
-    } else {
-        fillMethod = 0 
-    }
-    
 }
 
 function holdAndFill() {
@@ -106,18 +132,23 @@ function holdAndFill() {
     if (buttonClickFill.classList.value === 'btn on') {
         this.classList.toggle('on')
         buttonClickFill.classList.toggle('on')
+        fillMethod()
     } else if (buttonClickFill.classList.value === 'btn' || this.classList.value === 'btn') {
         this.classList.toggle('on')
+        fillMethod()
     } else {
         return
     }
+}
 
-    if (this.classList.value === 'btn on') {
-        fillMethod = 2
-    } else if (buttonClickFill.classList.value === 'btn on') {
-        fillMethod = 1
-    } else {
-        fillMethod = 0 
-    }
-    
+
+function getColor() {
+    color = this.value
+}
+
+
+//REFACTOR THIS PLEASE
+function addColor() {
+    document.styleSheets[0].cssRules[1].style.setProperty('--base', color)
+    this.setAttribute('style', 'background-color: var(--base)')
 }
