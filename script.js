@@ -5,6 +5,8 @@ let newGridPanels;
 
 let color = "#000000";
 
+let hue = 0;
+
 // Elements
 const gridSizer = document.querySelector('#grid-size')
 
@@ -23,6 +25,8 @@ const buttonHoldFill = document.querySelector('#btn-hold-and-fill')
 const buttonEraser = document.querySelector('#btn-eraser')
 
 const buttonColorGrabber = document.querySelector('#btn-color-grabber')
+
+const buttonRainbow = document.querySelector('#btn-rainbow')
 
 const allButtons = document.querySelectorAll('button')
 
@@ -47,6 +51,8 @@ buttonHoldFill.addEventListener('click', holdAndFill)
 penColor.addEventListener('change', getColor)
 
 buttonEraser.addEventListener('click', eraser)
+
+buttonRainbow.addEventListener('click', rainbow)
 
 buttonColorGrabber.addEventListener('click', grabColor) 
 
@@ -135,7 +141,7 @@ function clickAndFill() {
         this.classList.toggle('on')
         fillMethod()
     } else {
-        return
+        this.classList.remove('on')
     }
 }
 
@@ -149,14 +155,19 @@ function holdAndFill() {
         this.classList.toggle('on')
         fillMethod()
     } else {
-        return
+        this.classList.remove('on')
     }
 }
 
 function eraser(){
     this.classList.toggle('on')
+    buttonRainbow.classList.remove('on')
 }
 
+function rainbow() {
+    this.classList.toggle('on')
+    buttonEraser.classList.remove('on')
+}
 
 function getColor() {
     color = this.value
@@ -165,10 +176,19 @@ function getColor() {
 function addColor() {
 
     color = penColor.value
+
+    hue++
+    if (hue >= 360) {
+        hue = 0;
+    }
+
     if (buttonEraser.classList.value === 'btn on'){
         this.removeAttribute('style', `background-color: ${color}`)
+    } else if (buttonRainbow.classList.value === 'btn on') {
+        this.setAttribute('style', `background-color: hsl(${hue}, 100%, 50%)`)
     } else {
         this.setAttribute('style', `background-color: ${color}`)
+        
     }
 }
 
@@ -189,19 +209,34 @@ function clearSketch() {
 
 //Refactor this shit
 function grabColor() {
-    this.classList.add('on')
+    
+    offButtons()
+    buttonClickFill.setAttribute('disabled', "")
+    buttonHoldFill.setAttribute('disabled', "")
+    fillMethod()
+    buttonColorGrabber.classList.add('on')
+
     newGridPanels.forEach(div => div.addEventListener('click', whatColor))
 }
 
 function whatColor() {
 
-    const bgcolor = this.getAttribute('style').slice(19)
+    const bgcolor = this.getAttribute('style')
 
-    if (bgcolor) {
-        penColor.value = `#${bgcolor}`
+    if (bgcolor === null) {
+        buttonColorGrabber.classList.remove('on')
+        newGridPanels.forEach(div => div.removeEventListener('click', whatColor))
     } else {
-        return
+        penColor.value = `${bgcolor.slice(18)}`
+        buttonColorGrabber.classList.remove('on')
+        newGridPanels.forEach(div => div.removeEventListener('click', whatColor))
     }
 
-    buttonColorGrabber.classList.toggle('on')
+    buttonClickFill.removeAttribute('disabled', "")
+    buttonHoldFill.removeAttribute('disabled', "")
+
+}
+
+function offButtons() {
+    allButtons.forEach(button => button.classList.remove('on'))
 }
